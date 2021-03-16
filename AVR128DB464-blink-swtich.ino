@@ -38,7 +38,6 @@ void setup(void) {
 // variables then wrap your loop code in a while(1) statement.
 ///////////////////////////////////////////////////////////
 void loop(void) {
-  uint32_t timeReference = millis(); // init the time reference
   while (1) {
     digitalWrite(PIN_PC6, HIGH);   // activate LED (active high)
     delay(1000); // keep LED in this state at least this many milliseconds
