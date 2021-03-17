@@ -15,9 +15,10 @@ Arduino Blink with Switch Demo for the AVR128DB64 MCU
 //
 // Push button switch active low on PC7
 //
-// Operation:  LED blinks at 1000 ms on, 1000 ms off.  Pressing and holding
-// the push button cauess the LED to freeze (remain in current state) while
-// button is in down position.
+// Operation:  LED blinks at 1000 ms on, 1000 ms off.  Prints diagnostic
+// message to console with every LED state change.  Pressing and holding
+// the push button cauess the LED to freeze (remain in current state)
+// while button is in down position.
 //
 ///////////////////////////////////////////////////////////
 ```
