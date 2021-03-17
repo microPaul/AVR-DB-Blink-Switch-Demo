@@ -11,9 +11,10 @@
 //
 // Push button switch active low on PC7
 //
-// Operation:  LED blinks at 1000 ms on, 1000 ms off.  Pressing and holding
-// the push button cauess the LED to freeze (remain in current state) while
-// button is in down position.
+// Operation:  LED blinks at 1000 ms on, 1000 ms off.  Prints diagnostic
+// message to console with every LED state change.  Pressing and holding
+// the push button cauess the LED to freeze (remain in current state)
+// while button is in down position.
 //
 ///////////////////////////////////////////////////////////
 
@@ -23,6 +24,11 @@
 // this is the setup, do once, code
 ///////////////////////////////////////////////////////////
 void setup(void) {
+  // initialize serial port and send a message to the console
+  Serial4.begin(57600, SERIAL_8N1);  // start the serial port
+  delay(500); // let things settle
+  Serial4.printf("\nAVR128DB64 Blink Switch Demo\n"); // show msg on console
+  
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(PIN_PC6, OUTPUT);  // init PC6 at output for LED
   pinMode(PIN_PC7, INPUT); // init PC7 as input
@@ -39,13 +45,15 @@ void setup(void) {
 ///////////////////////////////////////////////////////////
 void loop(void) {
   while (1) {
-    digitalWrite(PIN_PC6, HIGH);   // activate LED (active high)
+    digitalWrite(PIN_PC6, LOW);   // activate LED (LED is active low)
+    Serial4.printf("LED is ON\n");  // diagnostic message to consoler
     delay(1000); // keep LED in this state at least this many milliseconds
-    while (!digitalRead(PIN_PC7)) ; // wait for switch to go inactive, thus freezing the LED in prior state
+    while (!digitalRead(PIN_PC7)); // if switch is closed wait here until it goes open
     
-    digitalWrite(PIN_PC6, LOW);    // disable LED
+    digitalWrite(PIN_PC6, HIGH);    // disable LED (LED is active low)
+    Serial4.printf("LED is OFF\n");  // diagnostic message to consoler
     delay(1000); // keep LED in this state at least this many milliseconds
-    while (!digitalRead(PIN_PC7)) ; // wait for switch to go inactive, thus freezing the LED in prior state  
+    while (!digitalRead(PIN_PC7)); // if switch is closed wait here until it goes open 
   }  
 }
 
