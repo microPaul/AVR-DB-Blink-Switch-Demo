@@ -1,4 +1,5 @@
 # AVR-DB-Blink-Switch-Demo
+```py
 Arduino Blink with Switch Demo for the AVR128DB64 MCU
 
 ///////////////////////////////////////////////////////////
@@ -19,3 +20,4 @@ Arduino Blink with Switch Demo for the AVR128DB64 MCU
 // button is in down position.
 //
 ///////////////////////////////////////////////////////////
+```
